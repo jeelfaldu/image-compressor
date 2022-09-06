@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   resizeToWidth: any;
   actuleHeight: any;
   actuleWidth: any;
-  fileSize:any = 0;
+  fileSize: any = 0;
   constructor(private imgService: ImageService) { }
 
   ngOnInit(): void {
@@ -41,13 +41,9 @@ export class HomeComponent implements OnInit {
     }
   }
   setRange(ev: any) {
-    if (ev.target.value > 20) {
-      this.imageQuality = ev.target.value;
-      this.resizeToHeight = ((this.imageQuality / 100) * this.actuleHeight).toFixed(2);
-      this.resizeToWidth = ((this.imageQuality / 100) * this.actuleWidth).toFixed(2);
-    } else {
-      this.imageQuality = 20;
-    }
+    this.imageQuality = ev.target.value;
+    this.resizeToHeight = ((this.imageQuality / 100) * this.actuleHeight).toFixed(2);
+    this.resizeToWidth = ((this.imageQuality / 100) * this.actuleWidth).toFixed(2);
   }
   fileChangeEvent(event: any): void {
     this.imgBase64 = event;
@@ -75,6 +71,17 @@ export class HomeComponent implements OnInit {
     const stringLength = base64String.length - 'data:image/png;base64,'.length;
     const sizeInBytes = 4 * Math.ceil((stringLength / 3)) * 0.5624896334383812;
     this.fileSize = (sizeInBytes / 1024).toFixed(2);
+  }
+  reset(){
+    this.stapper = 0;
+    this.imageURL= false;
+    this.imgBase64 = false;
+    this.ImageTransform = {
+      flipH: false,
+      flipV: false
+    }
+    this.canvasRotation = 0;
+    this.fileSize = 0;
   }
 
 }
