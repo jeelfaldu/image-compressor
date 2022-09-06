@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
     flipV: false
   };
   canvasRotation = 0;
+  resizeToHeight: any;
+  resizeToWidth: any;
+  actuleHeight:any;
+  actuleWidth:any;
   constructor(private imgService: ImageService) { }
 
   ngOnInit(): void {
@@ -38,6 +42,10 @@ export class HomeComponent implements OnInit {
   setRange(ev: any) {
     if (ev.target.value > 20) {
       this.imageQuality = ev.target.value;
+      this.resizeToHeight = ((this.imageQuality / 100) * this.actuleHeight).toFixed(2);
+      console.log("setRange ~ this.resizeToHeight", this.resizeToHeight)
+      this.resizeToWidth = ((this.imageQuality / 100) * this.actuleWidth).toFixed(2);
+      console.log("setRange ~ this.resizeToWidth", this.resizeToWidth)
     } else {
       this.imageQuality = 20;
     }
@@ -47,6 +55,12 @@ export class HomeComponent implements OnInit {
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
+    this.resizeToHeight = event.height;
+    this.resizeToWidth = event.width;
+    if(!this.actuleHeight || !this.actuleWidth) {
+      this.actuleHeight = event.height;
+      this.actuleWidth = event.width;
+    }
   }
   cropperReady() {
     // cropper ready
@@ -60,7 +74,7 @@ export class HomeComponent implements OnInit {
   imagecanvasRotation(rotation: number) {
     this.canvasRotation += rotation;
   }
-  saveImage(){
+  saveImage() {
     this.imgService.downloadBase64File(this.croppedImage);
   }
 }

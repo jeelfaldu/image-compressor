@@ -28,9 +28,9 @@
         <div class="row">
           <div class="col-6 selected-image">
             <image-cropper class="img-fluid" #imgCropper [imageChangedEvent]="imgBase64" [imageURL]="imageURL"
-              [onlyScaleDown]="true" [maintainAspectRatio]="false" format="png" (imageCropped)="imageCropped($event)"
-              (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" [canvasRotation]="canvasRotation"
-              [imageQuality]="imageQuality" [transform]="ImageTransform"></image-cropper>
+              [onlyScaleDown]="false" [maintainAspectRatio]="false" format="png" (imageCropped)="imageCropped($event)"
+              (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" [resizeToHeight]="resizeToHeight" [resizeToWidth]="resizeToWidth"  [canvasRotation]="canvasRotation"
+              [transform]="ImageTransform"></image-cropper>
           </div>
           <div class="col-6 ">
             <img [src]="croppedImage" class="img-fluid preview" alt="croppedImage">
@@ -41,7 +41,7 @@
         <div class="input">
           <div class="form-group">
             <label for="formControlRange">Image Quality {{imageQuality}}</label>
-            <input type="range" class="form-control-range" [value]="imageQuality" min="20" (change)="setRange($event)"
+            <input type="range" class="form-control-range" [value]="imageQuality" min="20" (change)="setRange($event); imgCropper.imageLoadedInView()"
               id="formControlRange">
           </div>
           <div class="buttons">
