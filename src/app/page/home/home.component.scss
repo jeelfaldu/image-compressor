@@ -9,7 +9,6 @@
 
   .upload-files-container {
     width: 420px;
-    padding: 30px 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,9 +16,7 @@
   }
 
   .drag-file-area {
-    border: 2px dashed #7b2cbf;
-    margin: 10px 0 15px;
-    padding: 30px 50px;
+
     width: 350px;
     text-align: center;
   }
@@ -30,7 +27,7 @@
 
   .drag-file-area h3 {
     font-size: 26px;
-    margin: 15px 0;
+    // margin: 15px 0;
   }
 
   .drag-file-area  {
@@ -58,7 +55,7 @@
     display: flex;
     align-items: center;
     margin: 5px 0;
-    padding: 5px 10px 5px 30px;
+    // padding: 5px 10px 5px 30px;
     border-radius: 5px;
     color: #BB0000;
     display: none;
@@ -80,7 +77,6 @@
   }
 
   .cannot-upload-message span:last-child {
-    padding-left: 20px;
     cursor: pointer;
   }
 
@@ -94,8 +90,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0 15px;
-    padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
   }
@@ -119,40 +113,18 @@
     cursor: pointer;
   }
 
-  .progress-bar {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    left: 4.5%;
-    width: 0;
-    height: 5px;
-    border-radius: 25px;
-    background-color: #4BB543;
-  }
-
-  .upload-button {
-    font-family: 'Montserrat';
-    background-color: #7b2cbf;
-    color: #f7fff7;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    border: none;
-    border-radius: 20px;
-    margin: 10px;
-    padding: 7.5px 50px;
-    cursor: pointer;
-  }
 
   .selected-image{
     img{
       max-width: 450px;
     }
+    image-cropper { border-radius: 1rem;}
   }
 }
 .selected-image-section{
   max-width: 750px;
   .preview{
+    border-radius: 1rem;
     border: 2px dashed #7b2cbf;
   }
 }
@@ -160,10 +132,13 @@
   background-color: #7b2cbf;
   color: #f7fff7;
 }
-.btn-my-primary{
-  color: #7b2cbf;
+.btn-my-primary:hover{
+  background-color: #7023b4;
 }
 .btn-my-primary{
   background-color: #7b2cbf;
   color: #fff;
+}
+.btn-icon{
+  margin-right: 8px;
 }

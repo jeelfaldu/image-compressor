@@ -1,9 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Mr Brown";
+  src: url(assets/font/lineto-brown-pro-bold.woff2);
+  src: url(assets/font/lineto-brown-pro-light.woff2);
+  src: url(assets/font/lineto-brown-pro-regular.woff2);
+}
+
+* {
+  &:not(i){
+    -webkit-font-smoothing: antialiased;
+    font-family: "Mr Brown", sans-serif !important;
+    font-weight: bold;
+  }
+  .btn{
+    border-radius: 1rem;
+  }
+}
+
 body {
   margin: 0px;
   padding: 0px;
   --cropper-outline-color: #08080827;
-  .ngx-ic-move{
-    border: 3px solid #2b75ffa6;
-  }
 }

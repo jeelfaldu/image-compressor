@@ -4,8 +4,15 @@
     <div class="form-container" appDragDrop (fileDropped)="upload($event)">
       <div class="upload-files-container">
         <div class="drag-file-area">
-          <h3 class="dynamic-message"> Drag & Drop any file here </h3>
-          <div class="label"> or <span class="browse-files"> <input type="file" #file accept="image/*"
+          <div>
+            <svg width="78" height="78" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M52 52v6.5h3.3A16.3 16.3 0 0058 26.2a21.1 21.1 0 00-41.7 3.9c-5.7 2-9.8 7.4-9.8 13.8 0 7.5 5.7 13.7 13 14.6H26V52h-5.8a8.1 8.1 0 01-1.8-15.8l4.2-1.5.2-4.4a14.6 14.6 0 0128.8-2.6l1 4.2 4.3.7A9.8 9.8 0 0155.3 52H52zM39 32.5l-13 13h9.8V65a3.3 3.3 0 006.5 0V45.5H52l-13-13z"
+                fill="#666C91"></path>
+            </svg>
+          </div>
+          <h3 class="dynamic-message"> Drag and drop image or </h3>
+          <div class="label"> <span class="browse-files"> <input type="file" #file accept="image/*"
                 class="default-file-input" (change)="selectImg($event)" /> <span class="browse-files-text"
                 (click)="file.click()">Browse
                 file </span> <span>from device</span> </span> </div>
@@ -25,6 +32,9 @@
   <app-card class="selected-image-section" *ngIf="stapper === 1">
     <div class="row">
       <div class="col-md-12">
+        <div class="mb-3">
+          <h3>Customize Image</h3>
+        </div>
         <div class="row">
           <div class="col-6 selected-image">
             <image-cropper class="img-fluid" #imgCropper [imageChangedEvent]="imgBase64" [imageURL]="imageURL"
@@ -38,36 +48,37 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12 mt-2">
-        <div class="input">
-          <div>
-            <p>Total size {{fileSize}} KB </p>
+      <div class="col-md-12 mt-3">
+        <div class="input ">
+          <div class="text-right" >
+            <span>Size {{fileSize}} KB </span>
           </div>
           <div class="form-group">
-            <label for="formControlRange">Image Quality {{imageQuality}} </label>
-
+            <label for="formControlRange">Quality {{imageQuality}}% </label>
             <input type="range" class="form-control-range" [value]="imageQuality" min="20"
               (change)="setRange($event); imgCropper.imageLoadedInView()" id="formControlRange">
           </div>
           <div class="buttons">
-            <button type="button" class="btn btn-light" (click)="imagecanvasRotation(1)"><i
+            <button type="button" class="btn btn-light btn-icon" (click)="imagecanvasRotation(1)"><i
                 class="fa-solid fa-rotate-right"></i></button>
-            <button type="button" class="btn btn-light" (click)="imagecanvasRotation(-1)"><i
+            <button type="button" class="btn btn-light btn-icon" (click)="imagecanvasRotation(-1)"><i
                 class="fa-solid fa-rotate-left"></i></button>
-            <button type="button" class="btn btn-light" [ngClass]="{'btn-active': ImageTransform.flipH}"
+            <button type="button" class="btn btn-light btn-icon" [ngClass]="{'btn-active': ImageTransform.flipH}"
               (click)="imageTransform('flipH'); imgCropper.imageLoadedInView()"><i
-                class="fa-regular fa-square-caret-right"></i></button>
-            <button type="button" class="btn btn-light" [ngClass]="{'btn-active': ImageTransform.flipV}"
+                class="fa-regular fa-square-caret-right "></i></button>
+            <button type="button" class="btn btn-light btn-icon" [ngClass]="{'btn-active': ImageTransform.flipV}"
               (click)="imageTransform('flipV'); imgCropper.imageLoadedInView()"><i
                 class="fa-regular fa-square-caret-left"></i></button>
           </div>
         </div>
       </div>
-      <div class="col-12 mt-3">
-        <button type="button" class="btn btn-block btn-my-primary" (click)="saveImage()"> Save</button>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2 pr-0">
+        <button type="button" class="btn btn-block btn-link color-light" (click)="reset()"> Reset</button>
       </div>
-      <div class="col-12 mt-2">
-        <button type="button" class="btn btn-block btn-light" (click)="reset()"> Reset</button>
+      <div class="col-10 pl-1">
+        <button type="button" class="btn btn-block btn-my-primary" (click)="saveImage()"> Download</button>
       </div>
     </div>
   </app-card>
