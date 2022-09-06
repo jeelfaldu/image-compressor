@@ -20,8 +20,9 @@ export class HomeComponent implements OnInit {
   canvasRotation = 0;
   resizeToHeight: any;
   resizeToWidth: any;
-  actuleHeight:any;
-  actuleWidth:any;
+  actuleHeight: any;
+  actuleWidth: any;
+  fileSize:any = 0;
   constructor(private imgService: ImageService) { }
 
   ngOnInit(): void {
@@ -43,9 +44,7 @@ export class HomeComponent implements OnInit {
     if (ev.target.value > 20) {
       this.imageQuality = ev.target.value;
       this.resizeToHeight = ((this.imageQuality / 100) * this.actuleHeight).toFixed(2);
-      console.log("setRange ~ this.resizeToHeight", this.resizeToHeight)
       this.resizeToWidth = ((this.imageQuality / 100) * this.actuleWidth).toFixed(2);
-      console.log("setRange ~ this.resizeToWidth", this.resizeToWidth)
     } else {
       this.imageQuality = 20;
     }
@@ -57,7 +56,8 @@ export class HomeComponent implements OnInit {
     this.croppedImage = event.base64;
     this.resizeToHeight = event.height;
     this.resizeToWidth = event.width;
-    if(!this.actuleHeight || !this.actuleWidth) {
+    this.getFileSize(event.base64);
+    if (!this.actuleHeight || !this.actuleWidth) {
       this.actuleHeight = event.height;
       this.actuleWidth = event.width;
     }
@@ -77,4 +77,10 @@ export class HomeComponent implements OnInit {
   saveImage() {
     this.imgService.downloadBase64File(this.croppedImage);
   }
+  getFileSize(base64String: any) {
+    const stringLength = base64String.length - 'data:image/png;base64,'.length;
+    const sizeInBytes = 4 * Math.ceil((stringLength / 3)) * 0.5624896334383812;
+    this.fileSize = (sizeInBytes / 1024).toFixed(2);
+  }
+
 }
