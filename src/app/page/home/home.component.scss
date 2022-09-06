@@ -13,10 +13,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    animation: fadeIn 1s;
   }
 
   .drag-file-area {
-
     width: 350px;
     text-align: center;
   }
@@ -47,18 +47,6 @@
 
   .default-file-input {
     opacity: 0;
-  }
-
-  .cannot-upload-message {
-    background-color: #ffc6c4;
-    font-size: 17px;
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-    // padding: 5px 10px 5px 30px;
-    border-radius: 5px;
-    color: #BB0000;
-    display: none;
   }
 
   @keyframes fadeIn {
@@ -122,6 +110,7 @@
   }
 }
 .selected-image-section{
+  animation: fadeIn 1s;
   max-width: 750px;
   .preview{
     border-radius: 1rem;
