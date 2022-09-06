@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0px;
+  padding: 0px;
+  --cropper-outline-color: #08080827;
+  .ngx-ic-move{
+    border: 3px solid #2b75ffa6;
+  }
+}

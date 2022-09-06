@@ -1,0 +1,67 @@
+<div class="continer">
+
+  <app-card *ngIf="stapper === 0">
+    <div class="form-container" appDragDrop (fileDropped)="upload($event)">
+      <div class="upload-files-container">
+        <div class="drag-file-area">
+          <h3 class="dynamic-message"> Drag & drop any file here </h3>
+          <div class="label"> or <span class="browse-files"> <input type="file" #file class="default-file-input"
+                (change)="selectImg($event)" /> <span class="browse-files-text" (click)="file.click()">browse
+                file</span> <span>from device</span> </span> </div>
+        </div>
+        <span class="cannot-upload-message"> <span class="material-icons-outlined">error</span> Please select a file
+          first <span class="material-icons-outlined cancel-alert-button">cancel</span> </span>
+        <div class="file-block">
+          <div class="file-info"> <span class="material-icons-outlined file-icon">description</span> <span
+              class="file-name"> </span> | <span class="file-size"> </span> </div>
+          <span class="material-icons remove-file-icon">delete</span>
+          <div class="progress-bar"> </div>
+        </div>
+        <button type="button" class="upload-button"> Upload </button>
+      </div>
+    </div>
+  </app-card>
+
+  <app-card class="selected-image-section" *ngIf="stapper === 1">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-6 selected-image">
+            <image-cropper class="img-fluid" #imgCropper [imageChangedEvent]="imgBase64" [imageURL]="imageURL"
+              [onlyScaleDown]="true" [maintainAspectRatio]="false" format="png" (imageCropped)="imageCropped($event)"
+              (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" [canvasRotation]="canvasRotation"
+              [imageQuality]="imageQuality" [transform]="ImageTransform"></image-cropper>
+          </div>
+          <div class="col-6 ">
+            <img [src]="croppedImage" class="img-fluid preview" alt="croppedImage">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mt-2">
+        <div class="input">
+          <div class="form-group">
+            <label for="formControlRange">Image Quality {{imageQuality}}</label>
+            <input type="range" class="form-control-range" [value]="imageQuality" min="20" (change)="setRange($event)"
+              id="formControlRange">
+          </div>
+          <div class="buttons">
+            <button type="button" class="btn btn-light" (click)="imagecanvasRotation(1)"><i
+                class="fa-solid fa-rotate-right"></i></button>
+            <button type="button" class="btn btn-light" (click)="imagecanvasRotation(-1)"><i
+                class="fa-solid fa-rotate-left"></i></button>
+            <button type="button" class="btn btn-light" [ngClass]="{'btn-active': ImageTransform.flipH}"
+              (click)="imageTransform('flipH'); imgCropper.imageLoadedInView()"><i
+                class="fa-regular fa-square-caret-right"></i></button>
+            <button type="button" class="btn btn-light" [ngClass]="{'btn-active': ImageTransform.flipV}"
+              (click)="imageTransform('flipV'); imgCropper.imageLoadedInView()"><i
+                class="fa-regular fa-square-caret-left"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mt-3">
+        <button type="button" class="btn btn-block btn-my-primary" (click)="saveImage()"> Save</button>
+      </div>
+    </div>
+  </app-card>
+
+</div>
