@@ -62,12 +62,6 @@ export class HomeComponent implements OnInit {
       this.actuleWidth = event.width;
     }
   }
-  cropperReady() {
-    // cropper ready
-  }
-  loadImageFailed() {
-    // show message
-  }
   imageTransform(position: 'flipH' | 'flipV') {
     this.ImageTransform[position] = !this.ImageTransform[position];
   }

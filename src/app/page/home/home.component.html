@@ -4,10 +4,11 @@
     <div class="form-container" appDragDrop (fileDropped)="upload($event)">
       <div class="upload-files-container">
         <div class="drag-file-area">
-          <h3 class="dynamic-message"> Drag & drop any file here </h3>
-          <div class="label"> or <span class="browse-files"> <input type="file" #file class="default-file-input"
-                (change)="selectImg($event)" /> <span class="browse-files-text" (click)="file.click()">browse
-                file</span> <span>from device</span> </span> </div>
+          <h3 class="dynamic-message"> Drag & Drop any file here </h3>
+          <div class="label"> or <span class="browse-files"> <input type="file" #file accept="image/*"
+                class="default-file-input" (change)="selectImg($event)" /> <span class="browse-files-text"
+                (click)="file.click()">Browse
+                file </span> <span>from device</span> </span> </div>
         </div>
         <span class="cannot-upload-message"> <span class="material-icons-outlined">error</span> Please select a file
           first <span class="material-icons-outlined cancel-alert-button">cancel</span> </span>
@@ -17,7 +18,6 @@
           <span class="material-icons remove-file-icon">delete</span>
           <div class="progress-bar"> </div>
         </div>
-        <button type="button" class="upload-button"> Upload </button>
       </div>
     </div>
   </app-card>
@@ -29,8 +29,8 @@
           <div class="col-6 selected-image">
             <image-cropper class="img-fluid" #imgCropper [imageChangedEvent]="imgBase64" [imageURL]="imageURL"
               [onlyScaleDown]="false" [maintainAspectRatio]="false" format="png" (imageCropped)="imageCropped($event)"
-              (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" [resizeToHeight]="resizeToHeight"
-              [resizeToWidth]="resizeToWidth" [canvasRotation]="canvasRotation" [transform]="ImageTransform">
+              [resizeToHeight]="resizeToHeight" [resizeToWidth]="resizeToWidth" [canvasRotation]="canvasRotation"
+              [transform]="ImageTransform">
             </image-cropper>
           </div>
           <div class="col-6 ">
