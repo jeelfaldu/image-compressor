@@ -45,9 +45,6 @@ export class HomeComponent implements OnInit {
     this.resizeToHeight = ((this.imageQuality / 100) * this.actuleHeight).toFixed(2);
     this.resizeToWidth = ((this.imageQuality / 100) * this.actuleWidth).toFixed(2);
   }
-  fileChangeEvent(event: any): void {
-    this.imgBase64 = event;
-  }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
     this.resizeToHeight = event.height;

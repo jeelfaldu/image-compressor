@@ -1,52 +1,30 @@
-.continer {
-  background-color: #0093E9;
-  background-image: linear-gradient(76deg, #0093E9 0%, #80D0C7 100%);
+.container {
   height: 100Vh;
   width: 100vw;
+  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 
+
   .upload-files-container {
-    width: 420px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     animation: fadeIn 1s;
+    background-color: transparent !important;
   }
 
   .drag-file-area {
-    width: 350px;
     text-align: center;
-  }
-
-  .drag-file-area .upload-icon {
-    font-size: 50px;
+    font-size: 19px;
   }
 
   .drag-file-area h3 {
     font-size: 26px;
-    // margin: 15px 0;
-  }
-
-  .drag-file-area  {
-    font-size: 19px;
   }
 
   .drag-file-area .browse-files-text {
     color: #7b2cbf;
     font-weight: bolder;
     cursor: pointer;
-  }
-
-  .browse-files span {
-    position: relative;
-    top: -25px;
-  }
-
-  .default-file-input {
-    opacity: 0;
   }
 
   @keyframes fadeIn {
@@ -59,75 +37,58 @@
     }
   }
 
-  .cannot-upload-message span,
-  .upload-button-icon {
-    padding-right: 10px;
-  }
-
-  .cannot-upload-message span:last-child {
-    cursor: pointer;
-  }
-
-  .file-block {
-    color: #f7fff7;
-    background-color: #7b2cbf;
-    transition: all 1s;
-    width: 390px;
-    position: relative;
-    display: none;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 25px;
-    cursor: pointer;
-  }
-
-  .file-info {
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-  }
-
-  .file-icon {
-    margin-right: 10px;
-  }
-
-  .file-name,
-  .file-size {
-    padding: 0 3px;
-  }
-
-  .remove-file-icon {
-    cursor: pointer;
-  }
-
-
-  .selected-image{
-    img{
+  .selected-image {
+    img {
       max-width: 450px;
     }
-    image-cropper { border-radius: 1rem;}
+
+    image-cropper {
+      border-radius: 1rem;
+    }
   }
 }
-.selected-image-section{
+
+.selected-image-section {
   animation: fadeIn 1s;
   max-width: 750px;
-  .preview{
+
+  .preview {
     border-radius: 1rem;
     border: 2px dashed #7b2cbf;
   }
 }
-.btn-active{
+
+.btn-active {
   background-color: #7b2cbf;
   color: #f7fff7;
 }
-.btn-my-primary:hover{
+
+.btn-my-primary:hover {
   background-color: #7023b4;
 }
-.btn-my-primary{
+
+.btn-my-primary {
   background-color: #7b2cbf;
   color: #fff;
 }
-.btn-icon{
+
+.btn-icon {
   margin-right: 8px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .container {
+    height: 100%;
+    display: inline-block;
+  }
+
+  .drop-down-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+  }
 }
